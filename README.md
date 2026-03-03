@@ -46,6 +46,30 @@ uv run uvicorn flashtalk_api.app:create_app --factory --reload
 
 API will be available at `http://127.0.0.1:8000`.
 
+## systemd
+
+Unit file:
+
+- `deploy/systemd/flashtalk-api.service`
+
+Install and run:
+
+```bash
+sudo cp deploy/systemd/flashtalk-api.service /etc/systemd/system/flashtalk-api.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now flashtalk-api
+sudo systemctl status flashtalk-api
+```
+
+Logs:
+
+```bash
+journalctl -u flashtalk-api -f
+```
+
+If your deployment path or user differs, update `User`, `WorkingDirectory`,
+`EnvironmentFile`, and `ReadWritePaths` in the unit file before installing it.
+
 ## Endpoint
 
 ### `GET /say`
