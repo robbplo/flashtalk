@@ -6,16 +6,16 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=robbin
-WorkingDirectory=/Users/robbin/projects/personal/flashtalk
-Environment=PATH=/Users/robbin/.local/bin:/usr/local/bin:/usr/bin:/bin
-EnvironmentFile=/Users/robbin/projects/personal/flashtalk/.env
+WorkingDirectory=/home/robbin/flashtalk
+Environment=PATH=/home/robbin/.local/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=/home/robbin/flashtalk/.env
 ExecStart=/usr/bin/env uv run uvicorn flashtalk_api.app:create_app --factory --host 0.0.0.0 --port 8000
 Restart=on-failure
 RestartSec=3
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full
-ReadWritePaths=/Users/robbin/projects/personal/flashtalk/data
+ReadWritePaths=/home/robbin/flashtalk/data
 
 [Install]
 WantedBy=multi-user.target
